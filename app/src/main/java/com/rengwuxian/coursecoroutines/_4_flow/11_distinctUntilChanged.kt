@@ -19,3 +19,6 @@ fun main() = runBlocking<Unit> {
   }
   delay(10000)
 }
+//distinctUntilChanged跟equals一樣
+//distinctUntilChanged 可以前面寫{}要判斷的條件
+//distinctUntilChangedBy 一樣是改key{判斷}不會改最後結果

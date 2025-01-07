@@ -25,6 +25,7 @@ private fun flowFun() {
   }
   GlobalScope.launch {
     flow<String> {
+      //這是為了拿scope得
       currentCoroutineContext()
     }
   }
@@ -34,3 +35,5 @@ private suspend fun showDispatcher() {
   delay(1000)
   println("Dispatcher: ${coroutineContext[ContinuationInterceptor]}")
 }
+
+//每個掛起函數一定會有context 因為他一定是外面有啟動corutine的

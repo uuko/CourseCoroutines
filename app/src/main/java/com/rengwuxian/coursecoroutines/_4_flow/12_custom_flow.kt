@@ -34,3 +34,9 @@ fun Flow<Int>.double(): Flow<Int> = channelFlow {
     send(it * 2)
   }
 }
+
+//自定義操作符
+//1.要先擴展flow 所以要用flow.XXX
+//2.通常是用channelflow or flow做擴展
+//3.要能擴展所以是我們要收集上游的數據 this.collect{}
+//4.要能轉成下游 所以在this.collect{ emit(???)} ???是你要怎轉的新值

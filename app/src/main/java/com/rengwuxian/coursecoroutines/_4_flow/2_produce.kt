@@ -26,4 +26,15 @@ fun main() = runBlocking<Unit> {
     }
   }
   delay(10000)
+
+  //跟async有點像 但async是一次性（通過最後一行做的）兩者都是跨攜程
+  //因為defferd只能放一樣東西嗎 如果我在async while迴圈也沒用  因為只有最後一行會傳出去
+  //produce是多次的  ReceiveChannel 通過send receive
+  //@ExperimentalCoroutinesApi
+  //public fun <E> CoroutineScope.produce(
+  //    context: CoroutineContext = EmptyCoroutineContext,
+  //    capacity: Int = 0,
+  //    @BuilderInference block: suspend ProducerScope<E>.() -> Unit
+  //): ReceiveChannel<E> =
+  //    produce(context, capacity, BufferOverflow.SUSPEND, CoroutineStart.DEFAULT, onCompletion = null, block = block)
 }

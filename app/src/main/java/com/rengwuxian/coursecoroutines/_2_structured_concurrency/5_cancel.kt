@@ -28,6 +28,8 @@ fun main() = runBlocking<Unit> {
 //      ensureActive()
       if (!isActive) {
         // clear
+        //thread用return corutine用拋異常（這樣才會結束子攜程 不然只會結束這個）
+        //delay會自己丟 就會結束了 所以不用try catch ，如果try catch反而會遇到問題 delay不管用 因為看做已經結束但又沒丟出去 除非這裡也丟出去
         throw CancellationException()
       }
       count++
@@ -60,4 +62,8 @@ fun main() = runBlocking<Unit> {
   delay(1000)
   job.cancel()
   // Thread.interrupt()
+
+
+  //isDeamon（corutine） > 守護現成 （沒在管會直接關閉）所以runblocking 裡面不要解綁父子攜程不然可能會被關 在裡面開thread反而不會
+// thread不會（用戶現成）
 }

@@ -26,3 +26,5 @@ fun main() = runBlocking<Unit> {
   }
   delay(10000)
 }
+//produce是創一個攜程 然後把send暴露出來
+//actor是創一個攜程把收暴露出來 都是簡化了創channel的過程在裡面

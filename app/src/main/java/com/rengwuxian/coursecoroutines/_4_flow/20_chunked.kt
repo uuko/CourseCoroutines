@@ -19,3 +19,23 @@ fun main() = runBlocking<Unit> {
   }
   delay(10000)
 }
+//分塊用 也是flow操作符
+//
+// @ExperimentalCoroutinesApi
+//public fun <T> Flow<T>.chunked(size: Int): Flow<List<T>> {
+//    require(size >= 1) { "Expected positive chunk size, but got $size" }
+//    return flow {
+//        var result: ArrayList<T>? = null // Do not preallocate anything
+//        collect { value ->
+//            // Allocate if needed
+//            val acc = result ?: ArrayList<T>(size).also { result = it }
+//            acc.add(value)
+//            if (acc.size == size) {
+//                emit(acc)
+//                // Cleanup, but don't allocate -- it might've been the case this is the last element
+//                result = null
+//            }
+//        }
+//        result?.let { emit(it) }
+//    }
+//}

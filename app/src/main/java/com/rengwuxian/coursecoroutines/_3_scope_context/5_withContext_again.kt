@@ -17,6 +17,12 @@ fun main() = runBlocking<Unit> {
     coroutineScope {
 
     }
+    launch {
+
+    }
+
+    //withcontext等於 可傳參數的coroutineScope = 並行的lauch
+    //並行 串行指的是括號內
   }
   delay(10000)
 }

@@ -11,4 +11,5 @@ fun main() = runBlocking<Unit> {
   }
   Thread.sleep(100)
   thread.stop()
+  //強制被終結，這樣不能判斷哪裡有問題（可能某個變數memory不前不後只能重走流程才行）
 }

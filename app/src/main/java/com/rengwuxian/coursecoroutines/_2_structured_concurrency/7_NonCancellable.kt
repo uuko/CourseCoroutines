@@ -32,6 +32,7 @@ fun main() = runBlocking<Unit> {
         // Log
       }
       if (!isActive) {
+
         withContext(NonCancellable) {
           // Write to database (Room)
           delay(1000)
@@ -56,7 +57,25 @@ fun main() = runBlocking<Unit> {
   newParent.cancel()
   delay(10000)
 }
-
+//corutine 父子是並行的
+//NonCancellable 是job但他把children都是空的 所以他其實只是阻斷父子關係 但他也沒辦法取消（因為他沒綁子攜程）
+//通常是在
+// 1.清理工作做 不然清理工作如果有用到delay會丟exception不能往下
+//2.不能被取消的事情（像是寫文件） 讀room/delay=>這裏會自動檢查 自己寫的除非去檢查才會
+//3. log
+//suspend fun performTask() {
+//    try {
+//        writeInfo() // 此处确保不会因取消中断
+//        // writeInfo 完成后，继续处理后续逻辑
+//        if (!isActive) {
+//            // 如果父协程取消，此处可检测并优雅终止
+//            return
+//        }
+//        processData() // 其他处理逻辑
+//    } catch (e: Exception) {
+//        // 处理可能的异常（比如文件写入错误）
+//    }
+//}
 suspend fun writeInfo() = withContext(Dispatchers.IO + NonCancellable) {
   // write to file
   // read from database (Room)

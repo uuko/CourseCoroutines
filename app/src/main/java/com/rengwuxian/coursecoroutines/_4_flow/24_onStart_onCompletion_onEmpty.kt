@@ -37,3 +37,6 @@ fun main() = runBlocking<Unit> {
   }
   delay(10000)
 }
+
+//onstart是在collect之前的（flow的開始） 所以collect外try catch 補不了 然後兩個onstart 後會比先執行
+//oncompletion是flow結束 異常也能算結束 所以能print ex 但他並不catch住所以還是會往下丟

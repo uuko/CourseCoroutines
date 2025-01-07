@@ -39,3 +39,6 @@ fun main() = runBlocking<Unit> {
   }
   delay(10000)
 }
+
+//只會retry上面的flow
+//catch 是接管生產 retry是重啟

@@ -28,3 +28,8 @@ fun main() = runBlocking<Unit> {
   }
   delay(10000)
 }
+//oneach 也是flow的操作符 會換新的flow
+//public fun <T> Flow<T>.onEach(action: suspend (T) -> Unit): Flow<T> = transform { value ->
+//    action(value)
+//    return@transform emit(value)
+//}

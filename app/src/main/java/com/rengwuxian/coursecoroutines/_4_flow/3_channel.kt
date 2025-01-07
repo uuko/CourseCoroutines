@@ -24,6 +24,10 @@ fun main() = runBlocking<Unit> {
       channel.receive()
     }
   }
+  //兩個攜程中的隊列 跟管道 可以送可以拿 掛起是的隊列 blockingquer 先禁見出 會阻塞攜程應該說是掛起//
+  //produce就是封裝後的做法讓他送 一個訂閱對應一個recevice 所以不適合做訂閱 可能會有人沒收到
+  //事件流訂閱要用shardflow
+  //caneel是單1v1
   scope.launch {
     while (isActive) {
       channel.receive()
@@ -43,3 +47,4 @@ fun main() = runBlocking<Unit> {
   }
   delay(10000)
 }
+//b=scope.poducer{ //this=a} 這裏B跟A是一樣的所其實channel負責收發都有

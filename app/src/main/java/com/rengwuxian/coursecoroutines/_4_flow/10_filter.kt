@@ -28,3 +28,13 @@ fun main() = runBlocking<Unit> {
   }
   delay(10000)
 }
+//filter filter過後的是產生一個通過這個操作符的新flow
+//public inline fun <T> Flow<T>.filter(crossinline predicate: suspend (T) -> Boolean): Flow<T> = transform { value ->
+//    if (predicate(value)) return@transform emit(value)
+//}
+//flowof
+//public fun <T> flowOf(vararg elements: T): Flow<T> = flow {
+//    for (element in elements) {
+//        emit(element)
+//    }
+//}

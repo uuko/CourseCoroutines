@@ -48,3 +48,26 @@ fun main() = runBlocking<Unit> {
   }
   delay(10000)
 }
+
+//事件流可以從任何地方發送數據  mutableshareflow
+//SharedFlow 底層基於 Channel 實現，而 Channel 天生具有線程安全機制。
+//無論多少個協程同時 emit，SharedFlow 都會正確處理，保證數據發送順序
+//數據流都是設計好的不太會從任何地方發 sharedIn就是街上層數據流 底層也是mutableshareflow
+//public fun <T> Flow<T>.shareIn(
+//    scope: CoroutineScope,
+//    started: SharingStarted,
+//    replay: Int = 0
+//): SharedFlow<T> {
+//    val config = configureSharing(replay)
+//    val shared = MutableSharedFlow<T>(
+//        replay = replay,
+//        extraBufferCapacity = config.extraBufferCapacity,
+//        onBufferOverflow = config.onBufferOverflow
+//    )
+//    @Suppress("UNCHECKED_CAST")
+//    val job = scope.launchSharing(config.context, config.upstream, shared, started, NO_VALUE as T)
+//    return ReadonlySharedFlow(shared, job)
+//}
+
+//有現成flow 就去用sharedflow 有要從外面用生產的就用mutableshareflow
+//也可以轉程 mutableshareflow.asshareflow 就是讓外面不能丟emit用的

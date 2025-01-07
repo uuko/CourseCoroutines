@@ -59,3 +59,7 @@ fun main() = runBlocking {
   }
   delay(10000)
 }
+
+//select是會決定 onXXX哪個最先結束 如果最先結束的就會回調 不會管其他的
+//onTimeout 是這裡超過幾秒就會結束
+//同時等待多個當最快的一個結束後就返回
